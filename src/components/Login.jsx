@@ -11,6 +11,7 @@ import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../redux/userSlice";
+import { USER_AVATAR } from "../utils/constants";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
@@ -47,19 +48,18 @@ const Login = () => {
           // Signed up
           // console.log(userCredential);
           const user = userCredential.user;
-          console.log(user);
+          // console.log(user);
           updateProfile(user, {
             displayName: name.current.value,
-            photoURL: "https://avatars.githubusercontent.com/u/68323575?s=48&v=4",
+            photoURL:USER_AVATAR ,
           })
             .then(() => {
               // Profile updated!
               const { uid, email, displayName,photoURL } = auth.currentUser;
-              console.log(auth,"updated user");
+              // console.log(auth,"updated user");
               dispatch(
                 addUser({ uid: uid, email: email, displayName: displayName,photoURL:photoURL })
               );
-              navigate("/browse");
             })
             .catch((error) => {
               // An error occurred
@@ -67,10 +67,10 @@ const Login = () => {
             });
         })
         .catch((error) => {
-          console.log(error);
+          // console.log(error);
           const errorCode = error.code;
           const errorMessage = error.message;
-          console.log(errorCode, errorMessage);
+          // console.log(errorCode, errorMessage);
           setErrorMessage(errorCode + "-" + errorMessage);
           // ..
         });
@@ -84,14 +84,14 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          console.log(user);
-          navigate("/browse");
+          // console.log(user);
+          // navigate("/browse");
           // ...
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          console.log(errorCode, errorMessage);
+          // console.log(errorCode, errorMessage);
           setErrorMessage(errorCode + "-" + errorMessage);
         });
     }
