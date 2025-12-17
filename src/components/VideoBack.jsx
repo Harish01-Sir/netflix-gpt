@@ -11,7 +11,7 @@ const VideoBack = ({ movieId }) => {
   return (
     <div className="w-screen">
       <iframe
-        className="w-screen aspect-video"
+        className="absolute top-0 left-0 w-screen h-screen aspect-video pointer-events-none"
         src={"https://www.youtube.com/embed/" + trailer?.key+"?autoplay=1&mute=1"}
         title="YouTube video player"
       ></iframe>

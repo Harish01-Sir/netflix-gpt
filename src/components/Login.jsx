@@ -119,7 +119,7 @@ const Login = () => {
             ref={name}
             type="text"
             placeholder="Full Name"
-            className="text-white w-full p-3 rounded-md border border-neutral-300 bg-[#29313F] mt-4"
+            className="text-white w-full p-3 rounded-md border border-neutral-300 bg-[#29313F]/45 mt-4"
           />
         )}
         <input
